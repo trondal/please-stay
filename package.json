@@ -9,6 +9,7 @@
   ],
   "type": "module",
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "test": "vitest run",
     "build": "rollup -c",
     "lint": "tsc",
