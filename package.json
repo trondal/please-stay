@@ -10,7 +10,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "ci": "tsc"
   },
   "author": "Trond Albinussen <trondal.albinussen@toll.no>",
   "license": "MIT",
