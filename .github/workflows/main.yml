@@ -22,7 +22,9 @@ jobs:
       with:
         node-version: 18.x
         cache: 'npm'
-        registry-url: https://registry.npmjs.org/
+        registry-url: https://registry.npmjs.org
     - run: npm install --frozen-lockfile
     - run: npm run ci
     - run: npm publish --access public
+      env:
+        NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
