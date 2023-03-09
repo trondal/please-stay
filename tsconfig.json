@@ -2,7 +2,7 @@
   "compilerOptions": {
     "outDir": "dist",
     "jsx": "react",
-    "skipLibCheck": false,
+    "skipLibCheck": true,
     "lib": ["es2015", "DOM"],
     "allowSyntheticDefaultImports": true,
     "declaration": true
