@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { AnimationType } from "../enums/AnimationType";
+import { AnimationType } from "./enums/AnimationType";
+
 import { useListenToVisibilityChangeOnMount } from "./useListenToVisibilityChangeOnMount";
 import { useTitleChangeEffect } from "./useTitleChangeEffect";
 
-export const usePleaseStay = (titles: string[], animationType: AnimationType) => {
+const usePleaseStay = (titles: string[], animationType: AnimationType) => {
     const [shouldIterateTitles, setShouldIterateTitles] = useState(false);
 
     // Sets the shouldToggleTitles value whenever page visibility is lost.
@@ -13,3 +14,5 @@ export const usePleaseStay = (titles: string[], animationType: AnimationType) =>
     // Modifies the document.title of the page whenever shouldToggle is true
     useTitleChangeEffect(titles, shouldIterateTitles, animationType);
 };
+
+export default usePleaseStay

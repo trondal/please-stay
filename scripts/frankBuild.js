@@ -1,8 +1,9 @@
-/* eslint-disable no-console */
-const { resolve, join, basename } = require('path');
-const { readFile, writeFile, copy } = require('fs-extra');
+import { resolve, join, basename } from 'path';
+import pkg from 'fs-extra';
 const packagePath = process.cwd();
 const distPath = join(packagePath, './dist');
+
+const { readFile, writeFile, copy } = pkg;
 
 const writeJson = (targetPath, obj) =>
   writeFile(targetPath, JSON.stringify(obj, null, 2), 'utf8');

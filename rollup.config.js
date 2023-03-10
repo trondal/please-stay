@@ -1,19 +1,19 @@
-//import typescript from '@rollup/plugin-typescript';
-
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from 'rollup-plugin-typescript2';
 import replace from '@rollup/plugin-replace';
-import terser from '@rollup/plugin-terser';
-import packageJson from './package.json' assert { type: 'json' };
-import { getFolders } from './scripts/buildUtils.js';
+import { terser } from 'rollup-plugin-terser';
+const packageJson = require('./package.json');
+import { getFolders } from './scripts/buildUtils';
+import generatePackageJson from 'rollup-plugin-generate-package-json';
 
 const plugins = [
   peerDepsExternal(),
   resolve(),
   replace({
-    __IS_DEV__: process.env.NODE_ENV === 'development'
+    __IS_DEV__: process.env.NODE_ENV === 'development',
+    preventAssignment: false
   }),
   commonjs(),
   typescript({
@@ -22,20 +22,18 @@ const plugins = [
   }),
   terser()
 ];
-
 const subfolderPlugins = (folderName) => [
   ...plugins,
   generatePackageJson({
     baseContents: {
       name: `${packageJson.name}/${folderName}`,
       private: true,
-      main: '../cjs/index.js', // --> points to cjs format entry point of whole library
-      module: './index.js', // --> points to esm format entry point of individual component
-      types: './index.d.ts' // --> points to types definition file of individual component
+      main: '../cjs/index.js',
+      module: './index.js',
+      types: './index.d.ts'
     }
   })
 ];
-
 const folderBuilds = getFolders('./src').map((folder) => {
   return {
     input: `src/${folder}/index.ts`,

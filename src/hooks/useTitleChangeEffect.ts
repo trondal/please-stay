@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { CHROME_TAB_CHARACTER_COUNT } from "../constants/Constants";
-import { AnimationType } from "../enums/AnimationType";
+import { CHROME_TAB_CHARACTER_COUNT } from "./constants/Constants";
+import { AnimationType } from "./enums/AnimationType";
+
 import { useInterval } from "./useInterval";
 
 export const useTitleChangeEffect = (
