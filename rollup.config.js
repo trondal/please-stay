@@ -34,12 +34,12 @@ const subfolderPlugins = (folderName) => [
     }
   })
 ];
-const folderBuilds = getFolders('./src/components').map((folder) => {
+const folderBuilds = getFolders('./src').map((folder) => {
   console.log(folder);
   return {
-    input: `src/components/${folder}/index.ts`,
+    input: `src/${folder}/index.ts`,
     output: {
-      file: `dist/components/${folder}/index.js`,
+      file: `dist/${folder}/index.js`,
       sourcemap: true,
       exports: 'named',
       format: 'esm'
