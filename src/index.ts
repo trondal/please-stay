@@ -1,5 +1,2 @@
-export { AnimationType } from './hooks/enums/AnimationType';
-
+export * from './components';
 export * from './Banner';
-export * from './House';
-export * from './Odd';
